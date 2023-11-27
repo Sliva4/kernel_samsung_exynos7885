@@ -3115,7 +3115,8 @@ static const struct bpf_func_proto bpf_setsockopt_proto = {
 };
 
 static const struct bpf_func_proto *
-bpf_base_func_proto(enum bpf_func_id func_id)
+bpf_base_func_proto(enum bpf_func_id func_id, const struct bpf_prog *unused)
+	#define bpf_base_func_proto(id) bpf_base_func_proto(id, NULL)
 {
 	switch (func_id) {
 	case BPF_FUNC_map_lookup_elem:
